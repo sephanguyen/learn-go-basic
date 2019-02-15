@@ -12,11 +12,26 @@ type Printer func(string)
 func Greet(salutation Salutation, do Printer, isFormal bool) {
 
 	message, alternate := CreateMessage(salutation.Name, salutation.Greeting)
-	if prefix := "Mr "; isFormal {
+	if prefix := GetPrefix(salutation.Name); isFormal {
 		do(prefix + message)
+	} else {
+		do(alternate)
 	}
-	do(alternate)
 
+}
+
+func GetPrefix(name string) (prefix string) {
+	switch name {
+	case "Bob":
+		prefix = "Mr "
+	case "Joe":
+		prefix = "Dr "
+	case "Mary":
+		prefix = "Mrs "
+	default:
+		prefix = "Dude "
+	}
+	return
 }
 
 func CreateMessage(name string, greeting string) (message string, alternate string) {
