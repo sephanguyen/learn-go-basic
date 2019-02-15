@@ -22,17 +22,14 @@ func Greet(salutation []Salutation, do Printer, isFormal bool, times int) {
 }
 
 func GetPrefix(name string) (prefix string) {
-	switch {
-	case name == "Bob":
-		prefix = "Mr "
-	case name == "Joe", name == "Amy", len(name) == 6:
-		prefix = "Dr "
-	case name == "Mary":
-		prefix = "Mrs "
-	default:
-		prefix = "Dude "
-	}
-	return
+
+	prefixMap := make(map[string]string)
+	prefixMap["Bob"] = "Mr "
+	prefixMap["Joe"] = "Dr "
+	prefixMap["Amy"] = "Dr "
+	prefixMap["Mary"] = "Mrs "
+
+	return prefixMap[name]
 }
 
 func TypeSwitchTest(x interface{}) {
