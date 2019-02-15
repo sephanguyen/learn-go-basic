@@ -30,6 +30,8 @@ func GetPrefix(name string) (prefix string) {
 		"Mary": "Mrs ",
 	}
 
+	delete(prefixMap, "Mary")
+
 	return prefixMap[name]
 }
 
