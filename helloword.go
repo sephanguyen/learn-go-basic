@@ -15,8 +15,10 @@ func Greet(salutation Salutation) {
 
 }
 
-func CreateMessage(name string, greeting string) (string, string) {
-	return greeting + " " + name, "HEY! " + name
+func CreateMessage(name string, greeting string) (message string, alternate string) {
+	message = greeting + " " + name
+	alternate = "HEY! " + name
+	return
 }
 
 func main() {
