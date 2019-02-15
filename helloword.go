@@ -3,7 +3,11 @@ package main
 import "./greeting"
 
 func main() {
-	var s = greeting.Salutation{"Mary", "Hello"}
-	greeting.Greet(s, greeting.CreatePrintFunction("!!!"), true, 5)
+	slice := []greeting.Salutation{
+		{"Bob", "Hello"},
+		{"Joe", "Hi"},
+		{"Mary", "What 's up?"},
+	}
+	greeting.Greet(slice, greeting.CreatePrintFunction("!!!"), true, 5)
 	greeting.TypeSwitchTest("asdas")
 }
