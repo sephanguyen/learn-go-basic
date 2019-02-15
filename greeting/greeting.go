@@ -34,6 +34,20 @@ func GetPrefix(name string) (prefix string) {
 	return
 }
 
+func TypeSwitchTest(x interface{}) {
+	switch x.(type) {
+	case int:
+		fmt.Println("int")
+	case string:
+		fmt.Println("string")
+	case Salutation:
+		fmt.Println("Salutation")
+	default:
+		fmt.Println("unknow")
+
+	}
+}
+
 func CreateMessage(name string, greeting string) (message string, alternate string) {
 	message = greeting + " " + name
 	alternate = "HEY! " + name
