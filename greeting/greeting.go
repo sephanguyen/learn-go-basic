@@ -23,11 +23,12 @@ func Greet(salutation []Salutation, do Printer, isFormal bool, times int) {
 
 func GetPrefix(name string) (prefix string) {
 
-	prefixMap := make(map[string]string)
-	prefixMap["Bob"] = "Mr "
-	prefixMap["Joe"] = "Dr "
-	prefixMap["Amy"] = "Dr "
-	prefixMap["Mary"] = "Mrs "
+	prefixMap := map[string]string{
+		"Bob":  "Mr ",
+		"Joe":  "Dr ",
+		"Amy":  "Dr ",
+		"Mary": "Mrs ",
+	}
 
 	return prefixMap[name]
 }
