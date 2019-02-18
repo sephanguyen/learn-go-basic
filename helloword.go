@@ -22,6 +22,14 @@ func main() {
 	fmt.Fprintf(&saluations[0], "the count is %d", 10)
 
 	saluations = append(saluations, greeting.Salutation{"Frank", "Hi"})
-	saluations.Greet(greeting.CreatePrintFunction("!!!"), true, 5)
+
+	done := make(chan bool)
+
+	go func() {
+		saluations.Greet(greeting.CreatePrintFunction("<C>"), true, 5)
+		done <- true
+	}()
+	go saluations.Greet(greeting.CreatePrintFunction("!!!"), true, 5)
 	greeting.TypeSwitchTest("asdas")
+	<-done
 }
