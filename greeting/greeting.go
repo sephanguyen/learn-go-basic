@@ -19,6 +19,13 @@ func (salutation *Salutation) Write(p []byte) (n int, err error) {
 	return
 }
 
+func (salutation Salutations) ChannelGreeter(c chan Salutation) {
+	for _, s := range salutation {
+		c <- s
+	}
+	close(c)
+}
+
 func (salsutation *Salutation) Rename(newName string) {
 	salsutation.Name = newName
 }

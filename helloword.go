@@ -23,15 +23,9 @@ func main() {
 
 	saluations = append(saluations, greeting.Salutation{"Frank", "Hi"})
 
-	done := make(chan bool, 2)
+	c := make(chan greeting.Salutation)
 
-	go func() {
-		saluations.Greet(greeting.CreatePrintFunction("<C>"), true, 5)
-		done <- true
-		done <- true
-		fmt.Println("Done!")
-	}()
-	go saluations.Greet(greeting.CreatePrintFunction("!!!"), true, 5)
-	greeting.TypeSwitchTest("asdas")
-	<-done
+	for s := range c {
+		fmt.Println(s.Name)
+	}
 }
